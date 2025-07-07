@@ -1,101 +1,67 @@
 document.addEventListener('DOMContentLoaded', function() {
     
-    // Elementos del DOM para el Modal de Login
+    // --- MANEJO DEL MODAL DE LOGIN ---
     const loginModal = document.getElementById('login-modal');
     const loginBtn = document.getElementById('login-btn');
     const closeModalBtn = document.getElementById('close-modal-btn');
 
-    // Función para mostrar el modal
-    function showModal() {
-        if (loginModal) {
-            loginModal.style.display = 'flex';
-        }
-    }
-
-    // Función para ocultar el modal
-    function closeModal() {
-        if (loginModal) {
-            loginModal.style.display = 'none';
-        }
-    }
-
-    // Evento para abrir el modal al hacer clic en el botón de Login
     if (loginBtn) {
-        loginBtn.addEventListener('click', showModal);
+        loginBtn.addEventListener('click', () => loginModal.style.display = 'flex');
     }
-
-    // Evento para cerrar el modal al hacer clic en la 'X'
     if (closeModalBtn) {
-        closeModalBtn.addEventListener('click', closeModal);
+        closeModalBtn.addEventListener('click', () => loginModal.style.display = 'none');
     }
-
-    // Evento para cerrar el modal si se hace clic fuera del contenido
     if (loginModal) {
         loginModal.addEventListener('click', function(event) {
             if (event.target === loginModal) {
-                closeModal();
+                loginModal.style.display = 'none';
             }
         });
     }
 
-    // También puedes cerrar el modal con la tecla 'Escape'
-    document.addEventListener('keydown', function(event) {
-        if (event.key === 'Escape') {
-            closeModal();
-        }
-    });
-    document.addEventListener('DOMContentLoaded', function() {
-    
-    const loginForm = document.getElementById('login-form'); // Asigna este ID a tu <form> de login
-    const errorMessage = document.getElementById('error-message'); // Añade un <p id="error-message"></p> para errores
+    // --- LÓGICA DE LOGIN ---
+    const loginForm = document.getElementById('login-form');
+    const errorMessage = document.getElementById('error-message');
 
     if (loginForm) {
         loginForm.addEventListener('submit', function(event) {
-            // Prevenir que el formulario se envíe de la forma tradicional
             event.preventDefault();
 
-            // Ocultar mensajes de error previos
-            if(errorMessage) errorMessage.style.display = 'none';
+            const emailInput = this.email.value;
+            const passwordInput = this.password.value;
 
-            // Obtener los datos del formulario
-            const formData = new FormData(loginForm);
-            const data = Object.fromEntries(formData.entries());
+            // Obtenemos el usuario guardado en localStorage
+            const storedUserJSON = localStorage.getItem('user');
+            
+            if (!storedUserJSON) {
+                errorMessage.textContent = 'No hay ningún usuario registrado.';
+                errorMessage.style.display = 'block';
+                return;
+            }
 
-            // Enviar los datos a la API usando fetch
-            fetch('api/login.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => response.json())
-            .then(result => {
-                if (result.success) {
-                    // Si el login es exitoso, redirigir al dashboard
-                    alert(result.message); // Muestra mensaje de éxito
-                    window.location.href = 'dashboard.html';
-                } else {
-                    // Si falla, mostrar el mensaje de error
-                    if(errorMessage) {
-                        errorMessage.textContent = result.message;
-                        errorMessage.style.display = 'block';
-                    } else {
-                        alert(result.message);
-                    }
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                if(errorMessage) {
-                    errorMessage.textContent = 'Ocurrió un error de conexión.';
-                    errorMessage.style.display = 'block';
-                } else {
-                    alert('Ocurrió un error de conexión.');
-                }
-            });
+            const storedUser = JSON.parse(storedUserJSON);
+
+            // Comparamos los datos
+            if (emailInput === storedUser.email && passwordInput === storedUser.password) {
+                // Si son correctos, guardamos un indicador de que la sesión está activa
+                localStorage.setItem('isLoggedIn', 'true');
+                alert('¡Bienvenido de vuelta!');
+                window.location.href = 'dashboard.html';
+            } else {
+                errorMessage.textContent = 'Correo o contraseña incorrectos.';
+                errorMessage.style.display = 'block';
+            }
         });
     }
-});
 
 });
+
+// --- FUNCIÓN DE LOGOUT ---
+// Esta función se puede llamar desde cualquier botón o enlace de "Salir"
+function logout() {
+    localStorage.removeItem('isLoggedIn'); // Quitamos el indicador de sesión
+    // Opcional: también podemos borrar los datos del usuario
+    // localStorage.removeItem('user'); 
+    alert('Has cerrado la sesión.');
+    window.location.href = 'index.html';
+}
