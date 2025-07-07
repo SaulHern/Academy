@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innovatech Solutions - Eventos</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+    <div class="login-modal-overlay" id="login-modal">
+        <div class="login-modal-content">
+            <span class="close-modal" id="close-modal-btn">&times;</span>
+            <div class="modal-logo">
+                <i class="fa-solid fa-gears"></i>
+                <h3>Innovatech Solutions</h3>
+            </div>
+            <h2>Iniciar Sesión</h2>
+            <form>
+                <div class="input-group">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" placeholder="Usuario" required>
+                </div>
+                <div class="input-group">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" placeholder="Contraseña" required>
+                </div>
+                <button type="submit" class="btn-primary">Ingresar</button>
+                <a href="#" class="forgot-password">Olvidé mi contraseña</a>
+            </form>
+            <div class="modal-register-link">
+                <p>¿No tienes cuenta?</p>
+                <a href="inscripcion.html" class="btn-secondary">Inscríbete Ahora</a>
+            </div>
+        </div>
+    </div>
+
+    <header class="main-header">
+        <div class="logo">
+            <i class="fa-solid fa-gears"></i>
+            <span>Innovatech Solutions</span>
+        </div>
+        <nav class="main-nav">
+            <a href="index.html"><i class="fa-solid fa-newspaper"></i> Noticias</a>
+            <a href="index.html" class="active"><i class="fa-solid fa-calendar-days"></i> Eventos</a>
+            <a href="#"><i class="fa-solid fa-calendar"></i> Calendario</a>
+            <a href="#"><i class="fa-solid fa-bullhorn"></i> Avisos</a>
+        </nav>
+        <div class="header-actions">
+            <button class="btn-login" id="login-btn"><i class="fa-solid fa-right-to-bracket"></i> Login</button>
+            <a href="inscripcion.html" class="btn-cta">Inscripciones</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="page-title">
+            <i class="fa-solid fa-calendar-days"></i>
+            <h2>Eventos</h2>
+        </div>
+        <p class="page-subtitle">Próximos eventos y actividades para nuestra comunidad tecnológica.</p>
+
+        <div class="events-grid">
+            <div class="event-card">
+                <div class="card-image-container">
+                    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2832&auto=format&fit=crop" alt="Webinar de IA">
+                    <span class="card-badge important">Importante</span>
+                </div>
+                <div class="card-content">
+                    <h3>Webinar: IA en los Negocios</h3>
+                    <p class="event-date">18 JUL</p>
+                    <p class="event-description">Descubre cómo la Inteligencia Artificial está transformando el mundo empresarial y cómo puedes aplicarla en tu compañía.</p>
+                </div>
+                <div class="card-footer">
+                    <div class="social-icons">
+                        <i class="fab fa-facebook-f"></i>
+                        <i class="fab fa-tiktok"></i>
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <div class="likes">
+                        <i class="fa-solid fa-heart"></i>
+                        <span>15</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <div class="card-image-container">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2671&auto=format&fit=crop" alt="Taller Agile">
+                     <span class="card-badge important">Importante</span>
+                </div>
+                <div class="card-content">
+                    <h3>Taller de Desarrollo Agile</h3>
+                    <p class="event-date">25 JUL</p>
+                    <p class="event-description">Un taller práctico para implementar metodologías Scrum y Kanban en tus equipos de desarrollo de software.</p>
+                </div>
+                <div class="card-footer">
+                    <div class="social-icons">
+                        <i class="fab fa-facebook-f"></i>
+                        <i class="fab fa-tiktok"></i>
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <div class="likes">
+                        <i class="fa-solid fa-heart"></i>
+                        <span>42</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <div class="card-image-container">
+                    <img src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?q=80&w=2670&auto=format&fit=crop" alt="Conferencia de Ciberseguridad">
+                     <span class="card-badge">Próximamente</span>
+                </div>
+                <div class="card-content">
+                    <h3>Conferencia de Ciberseguridad</h3>
+                    <p class="event-date">05 AGO</p>
+                    <p class="event-description">Expertos de la industria discuten las últimas tendencias y amenazas en el mundo de la ciberseguridad.</p>
+                </div>
+                <div class="card-footer">
+                    <div class="social-icons">
+                        <i class="fab fa-facebook-f"></i>
+                        <i class="fab fa-tiktok"></i>
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <div class="likes">
+                        <i class="fa-solid fa-heart"></i>
+                        <span>8</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <div class="card-image-container">
+                    <img src="https://images.unsplash.com/photo-1542744095-291d1f67b221?q=80&w=2670&auto=format&fit=crop" alt="Marketing Digital">
+                    <span class="card-badge important">Importante</span>
+                </div>
+                <div class="card-content">
+                    <h3>Feria de Marketing Digital 2025</h3>
+                    <p class="event-date">17 AGO</p>
+                    <p class="event-description">Conecta con agencias, aprende nuevas estrategias de SEO, SEM y redes sociales en nuestro evento anual más grande.</p>
+                </div>
+                <div class="card-footer">
+                    <div class="social-icons">
+                        <i class="fab fa-facebook-f"></i>
+                        <i class="fab fa-tiktok"></i>
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <div class="likes">
+                        <i class="fa-solid fa-heart"></i>
+                        <span>112</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    
+    <a href="#" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>
