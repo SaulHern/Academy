@@ -6,6 +6,13 @@
     <title>Dashboard - Innovatech</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <script>
+        if (localStorage.getItem('isLoggedIn') !== 'true') {
+            alert('Acceso denegado. Por favor, inicia sesión.');
+            window.location.href = 'index.html';
+        }
+    </script>
 </head>
 <body class="dashboard-body">
 
@@ -13,106 +20,33 @@
         <div class="sidebar-user">
             <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=2788&auto=format&fit=crop" alt="User Avatar">
             <div class="user-info">
-                <h4>Ana Gómez</h4>
+                <h4 id="user-name">Cargando...</h4>
                 <span><i class="fa-solid fa-circle"></i> Online</span>
             </div>
         </div>
         <nav class="sidebar-nav">
-            <a href="#" class="active"><i class="fa-solid fa-tachometer-alt"></i> Dashboard</a>
-            <a href="#"><i class="fa-solid fa-envelope"></i> Mensajería</a>
-            <a href="#"><i class="fa-solid fa-bullhorn"></i> Publicaciones</a>
-            <a href="#"><i class="fa-solid fa-file-excel"></i> Exportar a Excel</a>
-            <a href="#"><i class="fa-solid fa-users"></i> Clientes</a>
-            <a href="#"><i class="fa-solid fa-briefcase"></i> Proyectos</a>
-            <a href="#"><i class="fa-solid fa-dollar-sign"></i> Facturación</a>
-            <a href="#"><i class="fa-solid fa-cog"></i> Configuración</a>
-            <a href="index.html"><i class="fa-solid fa-sign-out-alt"></i> Salir</a>
+            <a href="dashboard.html" class="active"><i class="fa-solid fa-tachometer-alt"></i> Dashboard</a>
+            <a href="clientes.html"><i class="fa-solid fa-users"></i> Clientes</a>
+            <a href="reportes.html"><i class="fa-solid fa-chart-bar"></i> Reportes</a>
+            <a href="#" onclick="logout()"><i class="fa-solid fa-sign-out-alt"></i> Salir</a>
         </nav>
     </aside>
 
     <div class="dashboard-main-content">
         <header class="dashboard-header">
-            <i class="fa-solid fa-bars"></i> <div class="header-right">
-                <a href="index.html"><i class="fa-solid fa-home"></i> Inicio</a>
-                <span>Ana_G24</span>
-                <i class="fa-solid fa-bell"></i>
-                <i class="fa-solid fa-user-circle"></i>
-            </div>
-        </header>
-
+            </header>
         <main class="dashboard-container">
-            <div class="quick-actions">
-                <div class="action-card register">
-                    <i class="fa-solid fa-user-plus"></i>
-                    <span>Registrar Nuevo</span>
-                </div>
-                 <div class="action-card update">
-                    <i class="fa-solid fa-pencil-alt"></i>
-                    <span>Actualizar</span>
-                </div>
-                 <div class="action-card delete">
-                    <i class="fa-solid fa-trash"></i>
-                    <span>Eliminar</span>
-                </div>
-                 <div class="action-card report">
-                    <i class="fa-solid fa-chart-bar"></i>
-                    <span>Reporte</span>
-                </div>
-            </div>
-
-            <div class="report-panel">
-                <div class="panel-header">
-                    <h4>Generando reporte de actividad de clientes</h4>
-                    <i class="fa-solid fa-sync-alt"></i>
-                </div>
-                <div class="panel-filters">
-                    <select><option>Seleccione Cliente</option></select>
-                    <select><option>Seleccione Proyecto</option></select>
-                    <input type="date" placeholder="Fecha">
-                    <input type="date" placeholder="Fecha final">
-                    <button class="btn-primary-small"><i class="fa-solid fa-search"></i></button>
-                </div>
-                <div class="panel-table">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>N°</th>
-                                <th>Matrícula</th>
-                                <th>Cliente</th>
-                                <th>Acumulados</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>00111</td>
-                                <td>Marco Antonio Suárez González</td>
-                                <td><span class="status present">Presente (1)</span></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>00113</td>
-                                <td>Andrea Milagros Herrera Carrizales</td>
-                                <td><span class="status present">Presente (1)</span></td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>00114</td>
-                                <td>Juan Carlos Fernández Loyo</td>
-                                <td><span class="status absent">Ausente (0)</span></td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>00115</td>
-                                <td>Mariana Estefanía Vásquez Moreno</td>
-                                <td><span class="status present">Presente (1)</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+            <h1>Bienvenido al Dashboard</h1>
+            <p>Este es el panel principal de administración.</p>
         </main>
     </div>
 
+    <script src="script.js"></script> <script>
+        // Mostramos el nombre del usuario guardado en localStorage
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (user && user.nombres) {
+            document.getElementById('user-name').textContent = user.nombres;
+        }
+    </script>
 </body>
 </html>
